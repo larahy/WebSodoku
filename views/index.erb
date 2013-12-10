@@ -1,26 +1,26 @@
 <html>
 <head>
-  <title>Sodoku Game</title>
+  <title>Sudoku Game</title>
   <!--link to the CSS stylesheet -->
   <link href="/stylesheets/application.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<h1>Life is too short for playing Sodoku</h1>
-  <div id="sodoku">
+<h1>Life is too short for playing Sudoku</h1>
+  <div id="sudoku">
     <!-- one div for each row -->
     <% 3.times do |row| %>
       <div class='row'>
-        <!-- We want to create a separate div elements for boxes to style them using CSS -->
         <%3.times do |box| %>
           <div class='box'>
-          <!-- each box will have nine cells -->
+          <!-- each box will have 3 cell rows, and each cell row will have 3 cells so box has 9 cells in total -->
             <%3.times do |cell_row| %>
               <div class="cell_row">
                 <%3.times do |cell| %>
                   <div class="cell">
-                    <!-- every cell will have an input field -->
-                    <input type="text" maxlength="1" autocomplete="off">
+                    <%cell_index = row * 27 + box * 3 + cell_row * 9 + cell %>
+                    <%cell_value = @current_solution[cell_index]%>
+                    <input type="text" maxlength="1" autocomplete="off" value=<%= cell_value %>>
                   </div>
                 <%end%>
               </div>
