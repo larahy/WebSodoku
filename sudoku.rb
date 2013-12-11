@@ -12,7 +12,15 @@ def random_sudoku
 end
 
 def puzzle(sudoku)
-  sudoku
+  nil_positions = Array.new(45, 1).map {|one| one * rand(81)}
+  puzzle = sudoku.map {|i| i }
+
+  nil_positions.each { |n| puzzle[n] = '' }
+
+  # puzzle.each_with_index do |number, index|
+  #   nil_positions.include?(index) ? '' : number 
+  #   end
+  puzzle
 end
 
 
@@ -27,4 +35,5 @@ get '/solution' do
   @current_solution = session[:solution]
   erb :index
 end
+
 
